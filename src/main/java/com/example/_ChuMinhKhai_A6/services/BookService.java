@@ -28,4 +28,8 @@ public class BookService {
     public void deleteBook(Long id){
         bookRepository.deleteById(id);
     }
+    public List<Book> searchBooks(String keyword) {
+        return bookRepository.searchBooks(keyword.toLowerCase());
+    }
+
 }
