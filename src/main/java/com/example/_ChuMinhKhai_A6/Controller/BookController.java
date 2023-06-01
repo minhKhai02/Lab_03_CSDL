@@ -4,6 +4,7 @@ import com.example._ChuMinhKhai_A6.entity.Book;
 import com.example._ChuMinhKhai_A6.services.BookService;
 import com.example._ChuMinhKhai_A6.services.CategoryService;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,12 +12,12 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
 @Controller
 @RequestMapping("/books")
 public class BookController {
     @Autowired
     private BookService bookService;
+
     @Autowired
     private CategoryService categoryService;
     @GetMapping
@@ -26,11 +27,13 @@ public class BookController {
         return "book/list";
     }
     @GetMapping("/add")
-    public  String addBookForm(Model model){
+    public String addBookForm(Model model)
+    {
         model.addAttribute("book",new Book());
         model.addAttribute("categories",categoryService.getAllCategories());
         return "book/add";
     }
+
 
     @PostMapping("/add")
     public String addBook(@Valid @ModelAttribute("book")Book book , BindingResult result){
@@ -40,7 +43,6 @@ public class BookController {
         bookService.addBook(book);
         return "redirect:/books";
     }
-
     @GetMapping("/delete/{id}")
     public String deleteBook(@PathVariable("id")Long id){
         Book book = bookService.getBookById(id);
@@ -69,5 +71,8 @@ public class BookController {
         bookService.updateBook(update);
         return "redirect:/books";
     }
+
+
+
 
 }

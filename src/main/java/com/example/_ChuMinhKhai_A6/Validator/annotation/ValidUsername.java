@@ -1,10 +1,10 @@
 package com.example._ChuMinhKhai_A6.Validator.annotation;
 
-import com.example._ChuMinhKhai_A6.Validator.ValidCategoryIdValidator;
+import com.example._ChuMinhKhai_A6.Validator.ValidUsernameValidator;
+
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
 
-import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
@@ -14,12 +14,14 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 @Target({TYPE,FIELD})
 @Retention(RUNTIME)
-@Constraint(validatedBy = ValidCategoryIdValidator.class)
-@Documented
+@Constraint(validatedBy = ValidUsernameValidator.class)
 
-public @interface ValidCategoryId {
-    String message() default "Invalid Category Id";
-    Class<?>[] groups() default {};
-    Class<? extends Payload>[] payload() default {};
+
+public @interface ValidUsername {
+    String message() default "Username already exits";
+    Class<?>[] groups()default  {};
+    Class<? extends Payload>[] payload() default   {};
+
+
 
 }
