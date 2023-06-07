@@ -10,6 +10,8 @@ public class ValidUserIdValidator implements ConstraintValidator<ValidUserId, Us
     public boolean isValid(User user, ConstraintValidatorContext context){
         if (user == null)
             return true;
-        return user.getId() != null;
+        return  user.getId() !=null;
     }
+
 }
+

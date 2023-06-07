@@ -15,8 +15,10 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Retention(RUNTIME)
 @Constraint(validatedBy = ValidUserIdValidator.class)
 @Documented
+
 public @interface ValidUserId {
     String message()default "Invalid User ID";
-    Class<?>[] groups() default {};
+    Class<?>[] groups() default  {};
     Class<? extends Payload>[] payload() default {};
+
 }

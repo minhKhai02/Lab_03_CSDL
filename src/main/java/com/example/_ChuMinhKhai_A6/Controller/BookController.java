@@ -71,6 +71,13 @@ public class BookController {
         bookService.updateBook(update);
         return "redirect:/books";
     }
+    @GetMapping("/search")
+    public String searchBooks(@RequestParam("keyword") String keyword, Model model) {
+        List<Book> books = bookService.searchBooks(keyword);
+        model.addAttribute("books", books);
+        model.addAttribute("keyword", keyword);
+        return "book/list";
+    }
 
 
 
